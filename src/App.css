@@ -17,6 +17,7 @@ body {
   background-image: url(../public/images/700x700.webp);
   background-repeat: no-repeat;
   background-size: contain;
+  background-color: #fff;
   background-position: 0px -190px;
   width: 100%;
   max-width: 1024px;
@@ -46,4 +47,22 @@ h1 {
   text-align: center;
   text-shadow: 0 0 25px rgb(0, 0, 0);
 
+}
+
+.menu-items {
+  max-width: 1024px;
+  margin: 5rem auto;
+  column-count: 2;
+  column-gap: 20px;
+  padding: 0 5rem;
+}
+
+.menu-item {
+  page-break-inside: avoid;
+  padding: 0 1em 1em;
+
+}
+
+.menu-item > p {
+  font-size: 15px;
 }
