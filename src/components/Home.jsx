@@ -10,6 +10,8 @@ function SingleMenuComponent(props) {
 	)
 }
 
+
+// removed menu items
 export default function Home() {
 	const [menuItems, setMenuItems] = useState() // = [stateVar, setter]
 
