@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function SingleMenuComponent(props) {
 	console.log('props ->', props)
@@ -15,6 +15,13 @@ function SingleMenuComponent(props) {
 export default function Home() {
 	const [menuItems, setMenuItems] = useState() // = [stateVar, setter]
 
+	useEffect(() => {
+		fetch('https://codice-boca.web.app/menu')
+			.then(res => res.json()) // contacting the API
+			.then(data => setMenuItems(data)) // get clean data form res
+			.catch(x => console.error(x))
+	}, [])
+
 	// 1. fetch data - DONE
 	// 2. get array of objects - DONE
 
@@ -26,17 +33,13 @@ export default function Home() {
 	// 3.3.2 return each item so that it displays on the browser
 
 	const handleBtnClick = () => {
-		fetch('https://codice-boca.web.app/menu')
-			.then(res => res.json()) // contacting the API
-			.then(data => setMenuItems(data)) // get clean data form res
-			.catch(x => console.error(x))
 	}
 
 	return (
 		<section className='menu-items'>
 			{!menuItems
-					// if no menu items, show button
-					? <button onClick={() => handleBtnClick()}>get data</button>
+					// if no menu items, show loading
+					? <h3>Loading...</h3>
 					// otherwise show menu items
 					: menuItems.map(singleItem => {
 							return (
